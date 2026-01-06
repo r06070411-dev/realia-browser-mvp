@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: realia-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: ADMIN_TOKEN
+        value: changeme
+      - key: FRONTEND_URL
+        value: https://your-frontend.netlify.app
