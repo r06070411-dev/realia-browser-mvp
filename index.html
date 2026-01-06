@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>REALIA オープンワールド（最小）</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">R</div>
+      <div>
+        <div class="title">REALIA</div>
+        <div class="sub">Browser Open World / MVP</div>
+      </div>
+    </div>
+
+    <div class="status">
+      <span id="areaPill" class="pill">Area: Entrance</span>
+      <span id="hintPill" class="pill muted">近づいて「話す」</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- 左：ワールド -->
+    <section class="worldWrap">
+      <canvas id="world" width="900" height="520"></canvas>
+
+      <div class="hud">
+        <div class="hudRow">
+          <button id="btnEntrance" class="btn ghost">入口</button>
+          <button id="btnWorld" class="btn ghost">ワールド</button>
+          <button id="btnReset" class="btn ghost">リセット</button>
+        </div>
+
+        <div class="hudRow">
+          <button id="btnTalk" class="btn primary" disabled>話す（近くで有効）</button>
+          <button id="btnEnterArea" class="btn" disabled>このエリアに入る</button>
+        </div>
+
+        <div class="hudRow small">
+          <span>操作：矢印 / WASD / 画面左下スティック（スマホ）</span>
+        </div>
+      </div>
+
+      <!-- スマホ用バーチャルスティック -->
+      <div id="stick" class="stick" aria-hidden="true">
+        <div class="stickBase"></div>
+        <div class="stickKnob"></div>
+      </div>
+    </section>
+
+    <!-- 右：AI接客（簡易） -->
+    <aside class="side">
+      <div class="card">
+        <h2 class="h2">AI接客（簡易）</h2>
+        <p class="muted">※まずはダミー応答。後で本物のAIに差し替えます。</p>
+
+        <div id="chatLog" class="chatLog" role="log" aria-live="polite"></div>
+
+        <div class="chatBox">
+          <input id="chatInput" class="input" type="text" placeholder="例：予算100万円で外壁塗装できる？" />
+          <button id="chatSend" class="btn primary">送信</button>
+        </div>
+
+        <div class="small muted" id="npcInfo">NPC未選択（近づいて話す）</div>
+      </div>
+
+      <div class="card">
+        <h2 class="h2">エリア</h2>
+        <div class="areaList" id="areaList"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    © REALIA Demo
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
