@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>REALIA ブラウザ・オープンワールド（完全デモ A）</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">R</div>
+      <div class="brand-text">
+        <div class="brand-title">REALIA</div>
+        <div class="brand-sub">Browser Open World / Complete Demo (A)</div>
+      </div>
+    </div>
+
+    <div class="pills">
+      <div class="pill" id="pillArea">Area: World (Select)</div>
+      <div class="pill hint" id="pillHint">ゲートに近づくと入れます（ネオン/霧）</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- ===== Left column: World + HUD ===== -->
+    <section class="panel world-panel card">
+      <div class="panel-head">
+        <h1>オープンワールド</h1>
+        <p>街を歩き、ゲートを探してエリアへ入ります。スマホは左下スティックで移動。</p>
+      </div>
+
+      <div class="world-wrap">
+        <!-- World Canvas -->
+        <canvas id="worldCanvas" width="900" height="560" aria-label="open world"></canvas>
+
+        <!-- Mini map -->
+        <div id="minimap" class="minimap card-lite" aria-label="mini map">
+          <canvas id="minimapCanvas" width="220" height="160"></canvas>
+          <div class="legend">
+            <span><i class="dot you"></i>あなた</span>
+            <span><i class="dot gate"></i>ゲート</span>
+            <span><i class="dot ai"></i>AI</span>
+          </div>
+        </div>
+
+        <!-- Joystick -->
+        <div id="joystick" class="joystick card-lite" aria-label="joystick">
+          <div class="joy-base"></div>
+          <div class="joy-knob" id="joyKnob"></div>
+        </div>
+
+        <!-- Enter button (enabled only near gate) -->
+        <button id="enterBtn" class="enter-btn" disabled>
+          このエリアに入る
+        </button>
+
+        <!-- HUD quick buttons -->
+        <div class="hud-row card-lite">
+          <button class="chip" id="btnEntrance">入口</button>
+          <button class="chip" id="btnWorld">ワールド</button>
+          <button class="chip" id="btnReset">リセット</button>
+          <button class="chip" id="btnTalk">話す（近くで有効）</button>
+        </div>
+
+        <div class="hud-help">
+          操作：WASD/矢印 / 画面左下スティック（スマホ） / タップで話す
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Right column: AI Concierge ===== -->
+    <section class="panel chat-panel card">
+      <div class="panel-head">
+        <h2>AI接客（簡易）</h2>
+        <p class="muted">※いまはダミー応答。後で本物のAI（API）に差し替え可能。</p>
+      </div>
+
+      <div id="chatLog" class="chat-log" aria-label="chat log">
+        <div class="msg system">
+          <div class="role">System</div>
+          <div class="bubble">
+            起動しました。ワールド内の青いゲートに近づくと入場できます。AI（紫）に近づくと「話す」が有効になります。
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input id="chatText" type="text" placeholder="例：予算100万円で外壁塗装できる？" />
+        <button id="chatSend">送信</button>
+      </div>
+
+      <div class="status card-lite">
+        <div class="status-row"><span>現在エリア</span><b id="statusArea">World (Select)</b></div>
+        <div class="status-row"><span>近くのNPC</span><b id="statusNpc">なし</b></div>
+        <div class="status-row"><span>入場可能</span><b id="statusEnter">No</b></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Area scene -->
+  <div id="areaModal" class="modal" aria-hidden="true">
+    <div class="modal-card card">
+      <div class="modal-head">
+        <h3 id="areaTitle">Area</h3>
+        <button id="areaClose" class="xbtn" aria-label="close">×</button>
+      </div>
+      <p id="areaDesc" class="muted"></p>
+
+      <div class="area-scene card-lite" id="areaScene">
+        <div class="area-badge" id="areaBadge">NEON CITY</div>
+        <div class="area-ai">
+          <div class="avatar">AI</div>
+          <div class="ai-text">
+            <b id="areaAiName">AIコンシェルジュ</b>
+            <div id="areaAiLine" class="muted">いらっしゃいませ。ご用件をどうぞ。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="areaTalk" class="primary">AIに話しかける</button>
+        <button id="areaBack" class="ghost">ワールドに戻る</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
