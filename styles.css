@@ -1,0 +1,29 @@
+body {
+  background: #0a1020;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.カード {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+.プライマリ, .エンターエリア {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+}
+
+.隠し {
+  display: none;
+}
+
+.非表示 {
+  display: none;
+}
