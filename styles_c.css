@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #0d1b2a, #02040f);
+  color: #fff;
+}
+
+.header {
+  padding: 1.2rem;
+  background: linear-gradient(90deg, #1b263b, #0d1b2a);
+  text-align: center;
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.hero {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background: linear-gradient(135deg, #4cc9f0, #4895ef);
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}

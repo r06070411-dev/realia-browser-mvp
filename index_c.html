@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REALIA C案 デモ</title>
+  <link rel="stylesheet" href="styles_c.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>REALIA C案</h1>
+    <p>AI×バーチャル空間 × 提案型マーケット</p>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>あなたの要望から、最適な業者をAIが提案</h2>
+      <p>例：「100万円で住宅の塗装をできる業者を紹介して」</p>
+      <button onclick="enterArea()">エリアに入る</button>
+    </section>
+
+    <section id="result" class="result hidden">
+      <h3>AIが選定した候補</h3>
+      <ul id="vendors"></ul>
+      <button onclick="back()">戻る</button>
+    </section>
+  </main>
+
+  <script src="app_c.js"></script>
+</body>
+</html>
